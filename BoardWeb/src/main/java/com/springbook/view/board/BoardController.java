@@ -1,20 +1,35 @@
 package com.springbook.view.board;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 
 @Controller
+@SessionAttributes("board")
 public class BoardController {
 	static AbstractApplicationContext container = new GenericXmlApplicationContext("applicationContext.xml");
 	static BoardService boardService = (BoardService) container.getBean("boardService");
+	
+	// 검색 조건 목록 설정
+	@ModelAttribute("conditionMap")
+	public Map<String, String> searchConditionMap() {
+		Map<String, String> conditionMap = new HashMap<String, String>();
+		conditionMap.put("제목", "TITLE");
+		conditionMap.put("내용", "CONTENT");
+		return conditionMap;
+	}
 	
 	// 글 등록
 	@RequestMapping(value = "/insertBoard.do")
@@ -25,7 +40,7 @@ public class BoardController {
 	
 	// 글 수정
 	@RequestMapping(value = "/updateBoard.do")
-	public String updateBoard(BoardVO vo) {
+	public String updateBoard(@ModelAttribute("board") BoardVO vo) {
 		boardService.updateBoard(vo);
 		return "getBoardList.do";
 	}

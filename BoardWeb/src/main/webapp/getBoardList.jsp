@@ -21,8 +21,9 @@
 			<tr>
 				<td align="right">
 					<select name="searchCondition">
-						<option value="TITLE">제목
-						<option value="CONTENT">내용
+						<c:forEach items="${conditionMap }" var="option">
+							<option value="${option.value }">${option.key }
+						</c:forEach>
 					</select>
 					<input type="text" name="searchKeyword">
 					<input type="submit" value="검색">
