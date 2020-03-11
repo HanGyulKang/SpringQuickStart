@@ -9,7 +9,6 @@
 <body>
 <center>
 	<h1>로그인</h1>
-	<h2>### Login TEST ###</h2>
 	<hr>
 	<form action="login.do" method="post">
 		<table border="1" cellpadding="0" cellspacing="0">
