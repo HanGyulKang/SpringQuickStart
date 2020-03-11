@@ -39,6 +39,13 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<!-- SessionFactory 설정 -->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:sql-map-config.xml"></property>
+	</bean>
+	
+	
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
@@ -50,67 +57,5 @@
 		<aop:pointcut  id="txPointcut" expression="execution(* com.springbook.biz..*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 	</aop:config>
-	
-	<!--  
-	<bean id="log" class="com.springbook.biz.common.LogAdvice"></bean>
-	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
-	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"></bean>
-	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"></bean>
-	<bean id="after" class="com.springbook.biz.common.AfterAdvice"></bean>
-	<bean id="around" class="com.springbook.biz.common.AroundAdvice"></bean>
-	
-	<aop:config>
-		<aop:pointcut id="allPointcut" 
-			expression="execution(* com.springbook.biz..*Impl.*(..))" />
-		<aop:pointcut id="getPointcut" 
-			expression="execution(* com.springbook.biz..*Impl.get*(..))" />	
-			
-		<aop:aspect ref="log">
-			<aop:after pointcut-ref="allPointcut" method="printLog"/>
-		</aop:aspect>	
-	</aop:config>
-	
-	<aop:config>
-		<aop:pointcut id="allPointcut" 
-			expression="execution(* com.springbook.biz..*Impl.*(..))"/>
-			
-		<aop:aspect ref="before">
-			<aop:before pointcut-ref="allPointcut" method="beforeLog"/>
-		</aop:aspect>
-	</aop:config>
-	
-	<aop:config>
-		<aop:pointcut id="getPointcut" 
-			expression="execution(* com.springbook.biz..*Impl.*(..))"/>
-			
-		<aop:aspect ref="afterReturning">
-			<aop:after-returning pointcut-ref="getPointcut" method="afterLog"
-				returning="returnObj"/>
-		</aop:aspect>
-	</aop:config>
-	
-	<aop:config>
-		<aop:pointcut id="allPointcut" 
-			expression="execution(* com.springbook.biz..*Impl.*(..))"/>
-			
-		<aop:aspect ref="afterThrowing">
-			<aop:after-throwing pointcut-ref="allPointcut" method="exceptionLog"
-				throwing="exceptObj"/>
-		</aop:aspect>
 		
-		<aop:aspect ref="after">
-			<aop:after pointcut-ref="allPointcut" method="finallyLog"/>
-		</aop:aspect>
-	</aop:config>
-	
-	<aop:config>
-		<aop:pointcut id="allPointcut"
-			expression="execution(* com.springbook.biz..*Impl.*(..))"/>
-			
-		<aop:aspect ref="around">
-			<aop:around pointcut-ref="allPointcut" method="aroundLog"/>
-		</aop:aspect>
-	</aop:config>
-	-->
-	
 </beans>
