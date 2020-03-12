@@ -15,7 +15,7 @@
 
 <center>
 	<h1><spring:message code="message.board.list.mainTitle"/></h1>
-	<h3>${userName }<spring:message code="message.board.list.welcomeMsg"/><a href="logout.do">Log-out</a></h3>
+	<h3>${userName }<spring:message code="message.board.list.welcomeMSG"/><a href="logout.do">Log-out</a></h3>
 	
 	<!-- 검색 시작 -->
 	<form action="getBoardList.do" method="post">
@@ -28,7 +28,7 @@
 						</c:forEach>
 					</select>
 					<input type="text" name="searchKeyword">
-					<input type="submit" value="<spring:message code="message.board.list.search.condition.bnt"/>">
+					<input type="submit" value="<spring:message code="message.board.list.search.condition.btn"/>">
 				</td>
 			</tr>
 		</table>
@@ -49,7 +49,7 @@
 				<td>${board.seq }</td>
 				<td align="left"><a href="getBoard.do?seq=${board.seq }"> ${board.title }</a></td>
 				<td>${board.writer }</td>
-				<td><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd"/>${board.regDate }</td>
+				<td><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd"/></td>
 				<td>${board.cnt }</td>			
 			</tr>
 		</c:forEach>

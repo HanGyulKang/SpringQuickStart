@@ -12,7 +12,7 @@
 <center>
 	<h1><spring:message code="message.user.login.title"/></h1>
 	<a href="login.do?lang=en">
-		<spring:message code="message.user.login.language.en"/></a>
+		<spring:message code="message.user.login.language.en"/></a>&nbsp;&nbsp;
 	<a href="login.do?lang=ko">
 		<spring:message code="message.user.login.language.ko"/></a>	
 	<hr>
