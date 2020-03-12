@@ -35,6 +35,11 @@ public class BoardDAOMybatis {
 	
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		System.out.println("===> Mybatis로 insertBoard() 기능 처리");
-		return mybatis.selectList("BoardDAO.getBoardList", vo);
+		if(vo.getSearchCondition().equals("TITLE")) {
+			return mybatis.selectList("BoardDAO.getBoardList_T", vo);
+		} else if(vo.getSearchCondition().equals("CONTENT")) {
+			return mybatis.selectList("BoardDAO.getBoardList_C", vo);
+		}
+		return null;
 	}
 }

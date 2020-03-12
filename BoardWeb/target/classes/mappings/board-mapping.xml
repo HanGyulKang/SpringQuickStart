@@ -15,11 +15,10 @@
 
 
 	<insert id="insertBoard" parameterType="board">
-		<selectKey keyProperty="seq" resultType="int">
-			SELECT board_seq.nextval AS seq FROM dual
-		</selectKey>
-		INSERT INTO board(seq, title, writer, content)
-		VALUES(#{seq}, #{title}, #{writer}, #{content})
+		<![CDATA[
+			INSERT INTO board(seq, title, writer, content)
+			VALUES((SELECT NVL(MAX(SEQ), 0) + 1 FROM BOARD), #{title}, #{writer}, #{content})
+		]]>
 	</insert>
 	
 	<update id="updateBoard" parameterType="board">
@@ -31,8 +30,10 @@
 	</update>
 	
 	<delete id="deleteBoard" parameterType="board">
-		DELETE board 
-		WHERE seq=#{seq}
+		<![CDATA[
+			DELETE board 
+			WHERE seq=#{seq}
+		]]>
 	</delete>
 	
 	<select id="getBoard" parameterType="board" resultType="board">
@@ -48,6 +49,26 @@
 			SELECT * 
 			FROM board
 			WHERE title 
+			LIKE '%'||#{searchKeyword}||'%'
+			ORDER BY seq DESC
+		]]>
+	</select>
+	
+	<select id="getBoardList_T" resultMap="boardResult">
+		<![CDATA[
+			SELECT * 
+			FROM board
+			WHERE title 
+			LIKE '%'||#{searchKeyword}||'%'
+			ORDER BY seq DESC
+		]]>
+	</select>
+	
+	<select id="getBoardList_C" resultMap="boardResult">
+		<![CDATA[
+			SELECT * 
+			FROM board
+			WHERE content 
 			LIKE '%'||#{searchKeyword}||'%'
 			ORDER BY seq DESC
 		]]>
