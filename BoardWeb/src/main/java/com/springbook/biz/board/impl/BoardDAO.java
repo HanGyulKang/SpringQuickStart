@@ -12,7 +12,7 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.JDBCUtil;
 
 // DAO (Data Access Object)
-@Repository("BoardDAo")
+@Repository("BoardDAO")
 public class BoardDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;

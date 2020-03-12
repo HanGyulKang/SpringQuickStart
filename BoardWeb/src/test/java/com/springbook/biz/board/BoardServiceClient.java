@@ -7,12 +7,12 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.board.impl.BoardDAOMybatis;
+import com.springbook.biz.board.impl.BoardDAO;
 
 public class BoardServiceClient {
 
 	public static void main(String[] args) {
-		BoardDAOMybatis boardDAO = new BoardDAOMybatis();
+		BoardDAO boardDAO = new BoardDAO();
 	
 		BoardVO vo = new BoardVO();
 		vo.setTitle("임시 제목");
