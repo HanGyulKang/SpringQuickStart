@@ -15,9 +15,6 @@
 
 	<context:component-scan base-package="com.springbook.biz">
 	</context:component-scan>
-	<context:component-scan base-package="com.springbook.view">
-	</context:component-scan>
-	
 	
 	<!-- DataSource 설정 -->
 	<context:property-placeholder location="classpath:config/database.properties"/>
