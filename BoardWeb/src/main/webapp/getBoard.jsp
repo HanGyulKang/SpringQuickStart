@@ -6,6 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>글 상세</title>
+	<script>
+		function deleteBtn(seq) {
+			var getBoolean = confirm("글을 삭제하시겠습니까?");
+
+			if(getBoolean == true) {
+				window.location.href = 'deleteBoard.do?seq=' + seq;
+			} else if(getBoolean == false) {
+				window.location.href = 'getBoard.do?seq=' + seq;
+			}
+		}
+	</script>
+	<style>
+		#deleteBtn {
+			border: none;
+			background-color: #fff;
+			font-size: 103%;
+			cursor: pointer;
+			font-weight: bold;
+			
+			transition: .1s;
+		}
+		
+		#deleteBtn:hover {
+			color: orange;
+			border: 1px solid rgb(44,34,34);
+			border-radius: 8px;
+			background-color: rgb(44,34,34);
+		}
+	</style>
 </head>
 <body>
 
@@ -50,8 +79,9 @@
 			</table>
 		</form>
 		<hr>
-		<a href="insertBoard.do">글등록</a>&nbsp;&nbsp;&nbsp;
-		<a href="deleteBoard.do?seq=${board.seq }">글삭제</a>&nbsp;&nbsp;&nbsp;
+		<a href="insertBoard.jsp">글등록</a>&nbsp;&nbsp;&nbsp;
+		<%-- <a href="deleteBoard.do?seq=${board.seq }">글삭제</a>&nbsp;&nbsp;&nbsp; --%>
+		<button type="button" id="deleteBtn" onclick="deleteBtn(${board.seq})">글삭제</button>&nbsp;&nbsp;&nbsp;
 		<a href="getBoardList.do">글목록</a>
 	</center>
 

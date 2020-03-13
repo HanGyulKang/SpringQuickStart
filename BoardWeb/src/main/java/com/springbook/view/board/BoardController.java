@@ -82,6 +82,7 @@ public class BoardController {
 	@RequestMapping(value = "/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
 		model.addAttribute("board", boardService.getBoard(vo));
+		
 		return "getBoard.jsp";
 	}
 	

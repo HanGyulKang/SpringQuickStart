@@ -23,7 +23,8 @@
 			<tr>
 				<td bgcolor="orange">작성자</td>
 				<td align="left">
-					<input type="text" name="writer" size="10">
+					${userName }
+					<input type="hidden" name="writer" size="10" value="${userName }">
 				</td>
 			</tr>
 			<tr>
