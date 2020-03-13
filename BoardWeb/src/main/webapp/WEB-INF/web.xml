@@ -3,6 +3,8 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
+	<!-- 1. fileter가 맨 처음으로 돌아감 -->
 	<!-- CharacterEncoding 등록 -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>
@@ -18,7 +20,14 @@
 		<filter-name>characterEncoding</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+
+	<!-- 2. action을 탐 -->	
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 	
+	<!-- 3. DispatcherServlet으로 스프링이 돌아감(스프링 영역 입장) -->
 	<!-- Spring 설정 파일 등록 -->
 	<servlet>
 		<servlet-name>action</servlet-name>
@@ -31,11 +40,7 @@
 		</init-param>
 	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	
+	<!-- *Context.xml classpath 설정 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
