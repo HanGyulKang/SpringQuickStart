@@ -34,11 +34,13 @@
 			</tr>
 			<tr>
 				<td bgcolor="orange" width="70">업로드</td>
-				<td align="left" name="uploadFile"></td>
+				<td align="left" name="uploadFile">
+					<input type="file" name="uploadFile">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value=" 새글 등록 ">
+					<input type="submit" value="새글 등록 ">
 				</td>
 			</tr>
 		</table>
