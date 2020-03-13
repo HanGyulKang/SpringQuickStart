@@ -44,6 +44,7 @@
 		]]>
 	</select>
 	
+	<!-- 다이나믹 SQL이라는데... -->
 	<select id="getBoardList" resultMap="boardResult">
 		<![CDATA[
 			SELECT *
